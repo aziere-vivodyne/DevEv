@@ -28,6 +28,8 @@ def compute_bounding_box_center(vertices):
 class RoomManager():
     def __init__(self, viewer3D):
         self.viewer3D = viewer3D
+        self.ceiling = None
+        self.room = None
         self.toy_to_update = []
         self.room_texture = []
         self.toy_objects = {}
@@ -154,7 +156,7 @@ class RoomManager():
                 continue
             
             z_avg = np.mean(vert[:,-1])
-            if z_avg > 2.75: 
+            if z_avg > 2.75 or name in["second_ceiling"]: 
                 vertices_ceiling.append(vert)
                 colors_ceiling.append(color)
                 #normals.append(normal)
